@@ -34,12 +34,6 @@ variable "capacity_reservation_specification" {
   default     = {}
 }
 
-variable "cpu_credits" {
-  description = "The credit option for CPU usage (unlimited or standard)"
-  type        = string
-  default     = null
-}
-
 variable "disable_api_termination" {
   description = "If true, enables EC2 Instance Termination Protection"
   type        = bool
@@ -73,18 +67,6 @@ variable "ephemeral_block_device" {
 variable "get_password_data" {
   description = "If true, wait for password data to become available and retrieve it."
   type        = bool
-  default     = null
-}
-
-variable "hibernation" {
-  description = "If true, the launched EC2 instance will support hibernation"
-  type        = bool
-  default     = null
-}
-
-variable "host_id" {
-  description = "ID of a dedicated host that the instance will be assigned to. Use when an instance is to be launched on a specific dedicated host"
-  type        = string
   default     = null
 }
 
@@ -231,24 +213,5 @@ variable "vpc_security_group_ids" {
   type        = list(string)
   default     = null
 }
-
-variable "timeouts" {
-  description = "Define maximum timeout for creating, updating, and deleting EC2 instance resources"
-  type        = map(string)
-  default     = {}
-}
-
-variable "cpu_core_count" {
-  description = "Sets the number of CPU cores for an instance." # This option is only supported on creation of instance type that support CPU Options https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html#cpu-options-supported-instances-values
-  type        = number
-  default     = null
-}
-
-variable "cpu_threads_per_core" {
-  description = "Sets the number of CPU threads per core for an instance (has no effect unless cpu_core_count is also set)."
-  type        = number
-  default     = null
-}
-
 
 
