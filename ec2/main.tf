@@ -1,6 +1,6 @@
 
 resource "aws_instance" "this" {
-    count                                   = var.count
+    count                                   = var.ec2_count
     ami                                     = var.ami
     instance_type                           = var.instance_type
     hibernation                             = var.hibernation
