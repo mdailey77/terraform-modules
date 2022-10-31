@@ -1,7 +1,7 @@
-variable "create" {
-  description = "Whether to create an instance"
-  type        = bool
-  default     = true
+variable "count" {
+  description = "The number of EC2 instances being created"
+  type        = number
+  default     = 1
 }
 
 variable "name" {

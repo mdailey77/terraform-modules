@@ -1,6 +1,6 @@
 
-resource "aws_instance" "ec2" {
-    count                                   = local.create
+resource "aws_instance" "this" {
+    count                                   = var.count
     ami                                     = var.ami
     instance_type                           = var.instance_type
     hibernation                             = var.hibernation
@@ -16,5 +16,5 @@ resource "aws_instance" "ec2" {
     iam_instance_profile                    = var.iam_instance_profile
     associate_public_ip_address             = var.associate_public_ip_address
     root_block_device                       = var.root_block_device
-    tags                                    = var.tags
+    tags                                    = merge({ "Name" = var.name }, var.tags)
 }
