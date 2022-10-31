@@ -40,6 +40,12 @@ variable "disable_api_termination" {
   default     = null
 }
 
+variable "hibernation" {
+  description = "If true, the launched EC2 instance will support hibernation"
+  type        = bool
+  default     = false
+}
+
 variable "ebs_block_device" {
   description = "Additional EBS block devices to attach to the instance"
   type        = list(map(string))
