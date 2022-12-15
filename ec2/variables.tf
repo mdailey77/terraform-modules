@@ -148,10 +148,22 @@ variable "private_ip" {
   default     = null
 }
 
-variable "root_block_device" {
-  description = "Customize details about the root block device of the instance. See Block Devices below for details"
-  type        = list(any)
-  default     = []
+variable "volume_size" {
+  description = "the volume size of the EC2 instance"
+  type        = number
+  default     = 30
+}
+
+variable "volume_type" {
+  description = "the volume type of the EC2 instance"
+  type        = string
+  default     = "gp2"
+}
+
+variable "delete_termination" {
+  description = "whether to delete the EC2 instance when it is terminated"
+  type        = bool
+  default     = false
 }
 
 variable "secondary_private_ips" {
