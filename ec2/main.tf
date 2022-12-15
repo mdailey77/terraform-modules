@@ -16,10 +16,18 @@ resource "aws_instance" "this" {
     iam_instance_profile                    = var.iam_instance_profile
     associate_public_ip_address             = var.associate_public_ip_address
 
-    root_block_device {
-        delete_on_termination               = var.delete_termination
-        volume_size                         = var.volume_size
-        volume_type                         = var.volume_type
+    dynamic "root_block_device" {
+        for_each = var.root_block_device
+        content {
+            delete_on_termination = lookup(root_block_device.value, "delete_on_termination", true)
+            encrypted             = lookup(root_block_device.value, "encrypted", false)
+            iops                  = lookup(root_block_device.value, "iops", null)
+            kms_key_id            = lookup(root_block_device.value, "kms_key_id", null)
+            volume_size           = lookup(root_block_device.value, "volume_size", 30)
+            volume_type           = lookup(root_block_device.value, "volume_type", "gp2")
+            throughput            = lookup(root_block_device.value, "throughput", null)
+            tags                  = lookup(root_block_device.value, "tags", null)
+        }
     }
 
     tags                                    = merge({ "Name" = var.name }, var.tags)

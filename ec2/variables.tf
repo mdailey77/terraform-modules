@@ -46,6 +46,12 @@ variable "hibernation" {
   default     = false
 }
 
+variable "root_block_device" {
+  description = "Customize details about the root block device of the instance. See Block Devices below for details"
+  type        = list(any)
+  default     = []
+}
+
 variable "ebs_block_device" {
   description = "Additional EBS block devices to attach to the instance"
   type        = list(map(string))
