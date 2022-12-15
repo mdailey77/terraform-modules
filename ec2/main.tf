@@ -15,6 +15,12 @@ resource "aws_instance" "this" {
     get_password_data                       = var.get_password_data
     iam_instance_profile                    = var.iam_instance_profile
     associate_public_ip_address             = var.associate_public_ip_address
-    root_block_device                       = var.root_block_device
+
+    root_block_device {
+        delete_on_termination               = var.delete_termination
+        volume_size                         = var.volume_size
+        volume_type                         = var.volume_type
+    }
+
     tags                                    = merge({ "Name" = var.name }, var.tags)
 }
