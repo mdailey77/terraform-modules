@@ -6,7 +6,7 @@ resource "aws_instance" "this" {
     hibernation                             = var.hibernation
     user_data                               = var.user_data
     user_data_base64                        = var.user_data_base64
-    user_data_replace_on_change             = var.user_data_replace_on_change
+    #user_data_replace_on_change             = var.user_data_replace_on_change
     subnet_id                               = var.subnet_id
     key_name                                = var.key_name
     instance_initiated_shutdown_behavior    = var.instance_initiated_shutdown_behavior
